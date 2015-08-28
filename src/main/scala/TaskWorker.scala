@@ -40,7 +40,7 @@ class TaskWorker extends Actor with ActorLogging{
           val pResult = pTask.result.getOrElse(BigDecimal(0))
           val nResult = pResult + doTask(task)
 
-          log.info(s"${pTask.id}! + ${task.id}! = $nResult")
+          log.info(s"Task${pTask.id} + ${task.id}! = $nResult")
 
           self ! GoNextTask(
             previousTask = Task(id = task.id, func = task.func, result = Some(nResult)),
